@@ -15,10 +15,10 @@ def parse_policy(data):
 def check_pwd(data):
     policy = parse_policy(data)
     nb_occurences = policy["pwd"].count(policy["letter"])
-    if nb_occurences < policy["bounds"][0] or nb_occurences > policy["bounds"][1]:
-        return False
-    else:
+    if nb_occurences >= policy["bounds"][0] and nb_occurences <= policy["bounds"][1]:
         return True
+    else:
+        return False
 
 
 i = 0
