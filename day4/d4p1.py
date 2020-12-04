@@ -6,9 +6,9 @@ FIELDS = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid', 'cid']
 
 
 def parse_fields(data):
-    fields = re.split(r'\s|"\n"', data)
+    fields = re.split(r'\s|\n', re.sub(r'\n(?!.)', '', data))
     passport = {field.split(":")[0]: field.split(":")[1]
-                for field in fields if ':' in field}
+                for field in fields}
     return passport
 
 
