@@ -49,7 +49,7 @@ def check_rules(field, data):
     elif field == "ecl":
         return check_color(data)
     elif field == "pid":
-        return len(data) == 9 and data.isnumeric()
+        return len(data) == 9 and data.isdigit()
     else:
         return False
 
