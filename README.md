@@ -1,2 +1,2 @@
-# Advent of Code 2020
-Written in Python
+# 🎄 Advent of Code 2020
+Written in Python 🐍
