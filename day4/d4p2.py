@@ -47,7 +47,7 @@ def check_rules(field, data):
     elif field == 'hcl':
         return check_hex(data)
     elif field == "ecl":
-        return check_color(data)
+        return data in colors
     elif field == "pid":
         return len(data) == 9 and data.isnumeric()
     else:
@@ -57,7 +57,7 @@ def check_rules(field, data):
 def parse_fields(data):
     fields = re.split(r'\s|"\n"', data)
     passport = {field.split(":")[0]: field.split(":")[1]
-                for field in fields if field != ''}
+                for field in fields if ':' in field}
     return passport
 
 
