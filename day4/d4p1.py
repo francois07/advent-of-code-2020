@@ -20,8 +20,8 @@ def check_passport(data, fields=FIELDS, optional=[]):
     return True
 
 
-n = 0
+i = 0
 for passport in input:
     if check_passport(passport, optional=["cid"]):
-        n += 1
-print(n)
+        i += 1
+print(i)
