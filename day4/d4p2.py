@@ -47,7 +47,7 @@ def check_rules(field, data):
     elif field == 'hcl':
         return check_hex(data)
     elif field == "ecl":
-        return data in colors
+        return check_color(data)
     elif field == "pid":
         return len(data) == 9 and data.isnumeric()
     else:
