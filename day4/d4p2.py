@@ -44,8 +44,6 @@ def check_passport(data, fields=FIELDS, optional=[]):
     return True
 
 
-i = 0
-for passport in input:
-    if check_passport(passport, optional=["cid"]):
-        i += 1
-print(i)
+n = [check_passport(passport, optional=["cid"])
+     for passport in input].count(True)
+print(n)

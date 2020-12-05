@@ -1,3 +1,5 @@
+import math
+
 input = [x for x in open('input.txt', 'r').read().splitlines()]
 
 
@@ -20,8 +22,6 @@ def check_multiple_slopes(data, slopes):
     return [check_slope(data, slope) for slope in slopes]
 
 
-res = check_multiple_slopes(input, [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)])
-n = 1
-for i in res:
-    n *= i
+n = math.prod(check_multiple_slopes(
+    input, [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]))
 print(n)

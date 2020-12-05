@@ -33,5 +33,5 @@ def get_missing_seat(data):
     return -1
 
 
-n = [get_2d_position(data)["id"] for data in input]
-print(get_missing_seat(n))
+n = get_missing_seat([get_2d_position(data)["id"] for data in input])
+print(n)

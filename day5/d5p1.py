@@ -22,9 +22,9 @@ def get_2d_position(data):
     return {
         "row": row,
         "col": col,
-        "id": row*8 + col
+        "id": (row*8 + col)
     }
 
 
-n = [get_2d_position(data)["id"] for data in input]
-print(max(n))
+n = max([get_2d_position(data)["id"] for data in input])
+print(n)

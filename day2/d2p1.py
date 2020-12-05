@@ -21,8 +21,5 @@ def check_pwd(data):
         return False
 
 
-i = 0
-for pwd in input:
-    if check_pwd(pwd):
-        i += 1
-print(i)
+n = [check_pwd(pwd) for pwd in input].count(True)
+print(n)
