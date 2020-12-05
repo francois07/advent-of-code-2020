@@ -6,48 +6,19 @@ FIELDS = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid', 'cid']
 COLORS = ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']
 
 
-def check_year(year, x, y):
-    return len(year) == 4 and (x <= int(year) <= y)
-
-
-def check_height(height, x_cm, y_cm, x_in, y_in):
-    unit = height[-2:]
-    measure = height[:-2]
-    if unit == 'cm':
-        return (x_cm <= int(measure) <= y_cm)
-    elif unit == 'in':
-        return (x_in <= int(measure) <= y_in)
-    else:
-        return False
-
-
-def check_hex(hexa):
-    value = hexa[1:]
-    if hexa[0] != '#' or len(hexa) != 7:
-        return False
-    for char in value:
-        if not (0 <= int(char, base=16) < 16):
-            return False
-    return True
-
-
-def check_color(color, colors=COLORS):
-    return color in colors
-
-
-def check_rules(field, data):
+def check_rules(field, data, colors=COLORS):
     if field == 'byr':
-        return check_year(data, 1920, 2002)
+        return 1920 <= int(data) <= 2002
     elif field == 'iyr':
-        return check_year(data, 2010, 2020)
+        return 2010 <= int(data) <= 2020
     elif field == 'eyr':
-        return check_year(data, 2020, 2030)
+        return 2020 <= int(data) <= 2030
     elif field == 'hgt':
-        return check_height(data, 150, 193, 59, 76)
+        return re.compile(r'^((59|6\d|7[0-6])in)|((1[5-8]\d|19[0-3])cm)$').match(data)
     elif field == 'hcl':
-        return check_hex(data)
+        return re.compile(r"^#[0-9a-f]{6}$").match(data)
     elif field == "ecl":
-        return check_color(data)
+        return data in colors
     elif field == "pid":
         return len(data) == 9 and data.isdigit()
     else:
