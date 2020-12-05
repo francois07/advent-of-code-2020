@@ -20,7 +20,7 @@ def check_rules(field, data, colors=COLORS):
     elif field == "ecl":
         return data in colors
     elif field == "pid":
-        return len(data) == 9 and data.isdigit()
+        return re.compile(r'^\d{9}$').match(data)
     else:
         return False
 
