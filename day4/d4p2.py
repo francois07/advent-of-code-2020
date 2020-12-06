@@ -1,6 +1,6 @@
 import re
 
-input = [x for x in open('input.txt', 'r').read().split("\n\n")]
+input = [x for x in open('input.txt', 'r').read().strip().split("\n\n")]
 
 FIELDS = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid', 'cid']
 COLORS = ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']
@@ -26,7 +26,7 @@ def check_rules(field, data, colors=COLORS):
 
 
 def parse_fields(data):
-    fields = re.split(r'\s|\n', re.sub(r'\n(?!.)', '', data))
+    fields = re.split(r'\s|\n', data)
     passport = {field.split(":")[0]: field.split(":")[1]
                 for field in fields}
     return passport
