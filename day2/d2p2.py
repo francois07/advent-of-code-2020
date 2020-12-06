@@ -14,10 +14,7 @@ def parse_policy(data):
 
 def check_pwd(data):
     policy = parse_policy(data)
-    if(policy["pwd"][policy["positions"][0]] == policy["letter"]) ^ (policy["pwd"][policy["positions"][1]] == policy["letter"]):
-        return True
-    else:
-        return False
+    return (policy["pwd"][policy["positions"][0]] == policy["letter"]) ^ (policy["pwd"][policy["positions"][1]] == policy["letter"])
 
 
 n = [check_pwd(pwd) for pwd in input].count(True)
