@@ -1,4 +1,4 @@
-input = [x for x in open('input.txt', 'r').read().split("\n\n")]
+input = [x for x in open('input.txt', 'r').read().strip().split("\n\n")]
 
 
 def get_common_answers(data):
