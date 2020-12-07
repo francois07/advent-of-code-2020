@@ -19,7 +19,7 @@ def parse_rules(data):
     return res
 
 
-def count_contained_recursive(color, parsed_rules, n=0):
+def count_contained_recursive(color, parsed_rules):
     n = sum([int(bag[0]) for bag in parsed_rules[color]])
     for bag in parsed_rules[color]:
         n += count_contained_recursive(bag[1], parsed_rules) * int(bag[0])
