@@ -27,8 +27,8 @@ def find_containers(color, parsed_data):
 
 def count_containers_recursive(color, parsed_data, x=[]):
     containers = find_containers(color, parsed_data)
-    n = len(containers) - len([y for y in containers if y in x])
-    [x.append(y) for y in containers]
+    n = len([bag for bag in containers if bag not in x])
+    [x.append(bag) for bag in containers]
     for color in containers:
         n += count_containers_recursive(color, parsed_data, x)
     return n
