@@ -2,12 +2,11 @@ input = [x for x in open('input.txt', 'r').read().strip().split("\n\n")]
 
 
 def get_unique_answers(data):
-    answers = []
+    answers = set()
     persons = data.splitlines()
     for person in persons:
         for answer in person:
-            if answer not in answers:
-                answers.append(answer)
+            answers.add(answer)
     return len(answers)
 
 
