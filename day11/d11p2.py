@@ -18,8 +18,8 @@ def occupied_adjacent(data, x, y, direction):
 def count_adjacent_occupied(data, x, y):
     coords = [(-1, 0), (0, 1), (1, 0), (0, -1),
               (-1, 1), (-1, -1), (1, -1), (1, 1)]
-    res = [occupied_adjacent(data, x, y, (a, b))
-           for a, b in coords].count(True)
+    res = [occupied_adjacent(data, x, y, (i, j))
+           for i, j in coords].count(True)
     return res
 
 
@@ -43,10 +43,10 @@ def apply_rules(data):
     new_grid = [row[:] for row in data]
     coords = rule_coords(new_grid)
 
-    for coord in coords["#"]:
-        new_grid[coord[0]][coord[1]] = "#"
-    for coord in coords["L"]:
-        new_grid[coord[0]][coord[1]] = "L"
+    for i, j in coords["#"]:
+        new_grid[i][j] = "#"
+    for i, j in coords["L"]:
+        new_grid[i][j] = "L"
 
     return new_grid
 

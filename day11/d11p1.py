@@ -4,8 +4,8 @@ input = [list(x) for x in open('input.txt', 'r').read().splitlines()]
 def count_adjacent_occupied(data, x, y):
     coords = [(-1, 0), (0, 1), (1, 0), (0, -1),
               (-1, 1), (-1, -1), (1, -1), (1, 1)]
-    res = [data[y+a][x+b] for a, b in coords if (
-        0 <= y+a < len(data)) and (0 <= x+b < len(data[0]))].count("#")
+    res = [data[y+i][x+j] for i, j in coords if (
+        0 <= y+i < len(data)) and (0 <= x+j < len(data[0]))].count("#")
     return res
 
 
@@ -29,10 +29,10 @@ def apply_rules(data):
     new_grid = [row[:] for row in data]
     coords = rule_coords(new_grid)
 
-    for coord in coords["#"]:
-        new_grid[coord[0]][coord[1]] = "#"
-    for coord in coords["L"]:
-        new_grid[coord[0]][coord[1]] = "L"
+    for i, j in coords["#"]:
+        new_grid[i][j] = "#"
+    for i, j in coords["L"]:
+        new_grid[i][j] = "L"
 
     return new_grid
 
